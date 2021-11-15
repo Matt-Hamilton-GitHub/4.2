@@ -13,7 +13,7 @@ int main()
 {
     int decimal = 1023;
     long binarynumber = -1;
-    idecToBin(decimal, 2, binarynumber);
+    idecToBin(decimal, 20, binarynumber);
     cout << binarynumber << endl;
     
     system("pause");
@@ -55,21 +55,18 @@ void rbinToDec(long binaryNumber, int& decimal, int& weight)
 // -----------------------
 void idecToBin(int decimal, int base, long& binarynumber)
 {
-        int bin[10];
+        int binArr[20];//declare an array of 20 elements to store the values because the values will come in reverse order
+        int idx = 0;//declare index
       //loop through the array
-        for(int idx{0}; decimal > 0; idx++)    
-        {   
-              
-                bin[idx]= decimal % 2;
-                decimal = decimal / 2;
+        for( idx = 0; decimal > 0; idx++) {   
+              binArr[idx] = decimal % 2;
+              decimal = decimal / 2;
         }    
-        
-        binarynumber = 0;
-
-        for(int idx = idx-1 ; idx >= 0 ;idx--)    
+      binarynumber = 0;
+  for( idx = idx-1 ; idx >= 0 ;idx--)    
         {
                 //  shift all digit by one place to left.
-                binarynumber = binarynumber * 10 + bin[idx];
+                binarynumber = binarynumber * 10 + binArr[idx];
         }    
         
 }
